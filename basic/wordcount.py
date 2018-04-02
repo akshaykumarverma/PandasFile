@@ -45,6 +45,55 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
+
+def wordCount():
+    f=open('/Users/akshaykumar/desktop/googlepython/basic/small.txt','r')
+    file_in_list =f.readlines()# read all file give a list of string
+    #print(r)
+    dicfile={}
+    count=1
+    for liststr in file_in_list:
+        liststr=liststr.split()#split string by space and return list of string 
+        # print(liststr)
+        for element_in_list in liststr:
+            #print(element_in_list)
+            if element_in_list not in dicfile:
+                dicfile[element_in_list]=count
+                #print(dicfile)
+            else:
+                for j in dicfile:
+                    if j==element_in_list:
+                        count=count+1
+                        dicfile[j]=count
+    #print(dicfile)
+    f.close()
+    topcount(dicfile)
+    
+
+def topcount(dicfile):
+    print(dicfile)
+    #print(type(dicfile))
+    
+    #print(dicfile.keys())
+    #print(type(dicfile.keys()))
+    
+    #print(dicfile.values())
+    #list
+    #val=dicfile.values()
+    #print(sorted(val))
+    #for k,v in dicfile.items():
+     #   print(sorted(v))
+    dicnew = {}
+    for k,v in dicfile.items():
+        dicnew[v]=k
+    count1=0   
+    for key in sorted(dicnew.keys(),reverse=True):
+        if count1!=5:
+            print(key, dicnew[key])
+            count1=count1+1
+wordCount() 
+
+
 ###
 
 # This basic command line argument parsing code is provided and
